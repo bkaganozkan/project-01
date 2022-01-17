@@ -32,7 +32,10 @@ export default {
         border: `1px black solid`,
         "border-radius": "50%",
         "list-style": "none",
-        "background-color": this.color
+        "background-color": this.color,
+        width: "100px",
+        height: "100px"
+
         // "-webkit-transition": "transform 1s ease 1s",
         // "-moz-transition": "transform 1s ease 1s",
         // "-o-transition": "transform 1s ease 1s",
@@ -94,9 +97,9 @@ export default {
         })
       : null;
     // this.testBtn();
-    if (!this.rotateInterval) {
-      this.rotateInterval = setInterval(this.testBtn, 300);
-    }
+    // if (!this.rotateInterval) {
+    //   this.rotateInterval = setInterval(this.testBtn, 300);
+    // }
   },
   methods: {
     divideRadius() {
@@ -139,7 +142,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   pointer-events: none;
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
