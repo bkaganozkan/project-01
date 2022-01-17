@@ -1,21 +1,12 @@
 <template>
   <div class="container">
-    <div class="circle-container">
-      <div class="circle-information-container">
-        <div class="circle-title-container">
-          <span class="circle-title">
-            {{ circleName }}
-          </span>
-        </div>
-      </div>
-      <component
-        :is="component"
-        id="circle"
-        :style="circleStyle"
-      >
-        <slot />
-      </component>
-    </div>
+    <component
+      :is="component"
+      id="circle"
+      :style="circleStyle"
+    >
+      <slot />
+    </component>
   </div>
 </template>
 
@@ -26,7 +17,7 @@ export default {
     component: { type: [Object, String], default: "div" },
     items: { type: [Array] },
     positioned: { type: [String], default: "positioned" },
-    radius: { type: [Number], default: 900 },
+    radius: { type: [Number, String], default: 1200 },
     color: { type: [String] },
     circleName: { type: [String], default: null }
   },
@@ -35,9 +26,8 @@ export default {
       tag: null,
       circleRadius: null,
       circleStyle: {
-        position: "relative",
+        position: "absolute",
         padding: 0,
-        top: "50%",
         "z-index": this.$vnode.key,
         border: `1px black solid`,
         "border-radius": "50%",
@@ -51,9 +41,7 @@ export default {
       },
       angle: 360 / this.items.length,
       rot: 0,
-
       circleNarrow: 0,
-
       rotateInterval: null
     };
   },
@@ -85,13 +73,9 @@ export default {
     this.$vnode.child.$children.map((item, index) => {
       item.$el.id = this.positioned + "-" + index;
     });
-    var rot = 0;
     this.$slots.default
       ? this.$slots.default.map((slot) => {
-          if (slot.elm.__vue__.$data.tag) {
-            console.log(slot.elm.__vue__);
-            console.log(slot.elm.__vue__.$data.circleStyle);
-          } else {
+          if (slot.tag) {
             slot.elm.style = `
         position: absolute;
         display:block;
@@ -101,16 +85,17 @@ export default {
         width: ${this.circleRadius / 10}px;
         height: ${this.circleRadius / 10}px;
         text-align:center;
+        z-index 3;
        transform: rotate(${this.rot}deg) 
        translate(${this.circleRadius / 2}px, 0px)  
-       rotate(${rot * -1}deg)  `;
+       rotate(${this.rot * -1}deg)  `;
             this.rot = this.rot + this.angle;
           }
         })
       : null;
     // this.testBtn();
     if (!this.rotateInterval) {
-      this.rotateInterval = setInterval(this.testBtn, 1000);
+      this.rotateInterval = setInterval(this.testBtn, 300);
     }
   },
   methods: {
@@ -118,7 +103,7 @@ export default {
       this.circleRadius = this.circleRadius / 2;
     },
     testBtn() {
-      if (this.rot > 720) this.rot -= 360;
+      if (this.rot > 720) this.rot = 0;
       this.$slots.default
         ? this.$slots.default.map((slot) => {
             slot.elm.style = `top: 45%;
@@ -130,10 +115,11 @@ export default {
             text-align:center;
             width: ${this.circleRadius / 10}px;
             height: ${this.circleRadius / 10}px;       
-            -webkit-transition: -webkit-transform 30s;
-            -moz-transition: -moz-transform 30s ;
-            -o-transition: -o-transform 30s ;
-             transition: transform 30s ;`;
+            -webkit-transition: -webkit-transform 10s;
+            -moz-transition: -moz-transform 10s ;
+            -o-transition: -o-transform 10s ;
+             transition: transform 10s;
+             `;
             this.rotateChild(slot, this.rot);
           })
         : null;
@@ -157,6 +143,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0;
   width: 100%;
   height: 100%;
 }
