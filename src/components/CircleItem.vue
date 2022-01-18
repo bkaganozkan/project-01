@@ -1,5 +1,5 @@
 <template>
-  <div>{{item}}</div>
+  <div class="Item">{{item}}</div>
 </template>
 
 <script>
@@ -9,6 +9,9 @@ export default {
 }
 </script>
 
-<style>
+<style >
+.Item{
+  background-color: greenyellow;
+}
 
 </style>

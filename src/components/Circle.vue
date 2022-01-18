@@ -106,7 +106,7 @@ export default {
       this.circleRadius = this.circleRadius / 2;
     },
     testBtn() {
-      if (this.rot > 720) this.rot = 0;
+      // if (this.rot > 10000) this.rot = 360;
       this.$slots.default
         ? this.$slots.default.map((slot) => {
             slot.elm.style = `top: 45%;
@@ -116,12 +116,12 @@ export default {
             left: 45%;
             z-index 3;
             text-align:center;
-            width: ${this.circleRadius / 10}px;
-            height: ${this.circleRadius / 10}px;       
-            -webkit-transition: -webkit-transform 10s;
-            -moz-transition: -moz-transform 10s ;
-            -o-transition: -o-transform 10s ;
-             transition: transform 10s;
+            width: ${this.circleRadius / 8}px;
+            height: ${this.circleRadius / 8}px;       
+            -webkit-transition: -webkit-transform ${this.rot/60}s;
+            -moz-transition: -moz-transform ${this.rot/60}s ;
+            -o-transition: -o-transform ${this.rot/60}s ;
+             transition: transform ${this.rot/60}s;
              `;
             this.rotateChild(slot, this.rot);
           })

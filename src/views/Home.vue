@@ -3,7 +3,10 @@
     <Header />
     <div class="bk-main-card">
       <div class="bk-circle-container left-container">
-        <Personal />
+        <Personal
+          id="Circle-1"
+          circle-name="Circle 1"
+        />
       </div>
       <div class="bk-about-container">
         <div class="bk-about f-20">
@@ -14,7 +17,10 @@
         </div>
       </div>
       <div class="bk-circle-container right-container">
-        <Personal />
+        <Personal
+          id="Circle-2"
+          circle-name="Circle 2"
+        />
       </div>
     </div>
   </div>

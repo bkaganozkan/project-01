@@ -1,14 +1,17 @@
 <template>
-  <div class="bk-list-container">
+  <div
+    v-if="dataLoaded"
+    class="bk-list-container"
+  >
     <CircleList
-      v-for="ind in 3"
+      v-for="(ind,x) in circleData.length"
+      :id="circleName"
       :key="ind"
-      :items="PersonalityData.values"
-      :circle-name="PersonalityData.title"
+      :items="circleData[x].value"
       radius="750"
     >
       <PersonalCard
-        v-for="(value, index) in PersonalityData.values"
+        v-for="(value, index) in circleData[x].value"
         :key="index"
         :item="value"
       />
@@ -19,19 +22,36 @@
 <script>
 import CircleList from "@/components/Circle";
 import PersonalCard from "./PersonalCard.vue";
+import {mapActions, mapGetters} from 'vuex'
 export default {
   name: "Personal",
   components: {
     CircleList,
     PersonalCard
   },
+  props:{
+    circleName:{type:[String]}
+  },
   data() {
     return {
-      PersonalityData: {
-        title: "Personal",
-        values: ["War", "Against", "Bordo", "Teyoo"]
-      }
+      dataLoaded:false,
+      circleData:[],
     };
+  },
+  created(){
+    this.GET_CIRCLE_DATA(this.circleName).then(res => {
+      this.circleData =this.personalData[this.circleName];
+      console.log(this.circleData);
+      this.dataLoaded = res})
+    
+  },
+  methods:{
+    ...mapActions(['GET_CIRCLE_DATA'])
+  },
+  computed:{
+    ...mapGetters({
+      personalData:'getPersonalData'
+    })
   }
 };
 </script>
