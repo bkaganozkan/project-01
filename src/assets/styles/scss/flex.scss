@@ -8,5 +8,6 @@ $assets: "~@/assets/";
 }
 .background {
   background: url($assets + "/images/space.jpg") no-repeat center center fixed;
+  background-size: cover;
   height: 100vh;
 }
