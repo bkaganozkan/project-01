@@ -29,7 +29,7 @@ export default {
         position: "absolute",
         padding: 0,
         "z-index": this.$vnode.key,
-        border: `1px black solid`,
+        border: `3px #8b0cd5 solid`,
         "border-radius": "50%",
         "list-style": "none",
         "background-color": this.color,
@@ -97,9 +97,9 @@ export default {
         })
       : null;
     // this.testBtn();
-    // if (!this.rotateInterval) {
-    //   this.rotateInterval = setInterval(this.testBtn, 300);
-    // }
+    if (!this.rotateInterval) {
+      this.rotateInterval = setInterval(this.testBtn, 300);
+    }
   },
   methods: {
     divideRadius() {
@@ -112,7 +112,7 @@ export default {
             slot.elm.style = `top: 45%;
             position: absolute;
             pointer-events: visible;
-            border:1px solid black;
+            border:1px solid gray;
             left: 45%;
             z-index 3;
             text-align:center;

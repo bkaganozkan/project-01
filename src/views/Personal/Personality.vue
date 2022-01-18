@@ -45,7 +45,6 @@ export default {
 .bk-list-container {
   position: relative;
   width: 100%;
-  height: 100%;
   top:50%;
   border-radius: 50%;
   background-color: wheat;
