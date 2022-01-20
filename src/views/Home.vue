@@ -1,8 +1,12 @@
 <template>
   <div class="background">
-    <Header />
+    <Header @activePage="activeModelPage" />
     <div class="bk-main-card">
-      <div class="bk-circle-container left-container">
+      <div
+        id="left-container"
+        class="bk-circle-container left-container"
+        :class="[closeCircles ? 'close':'']"
+      >
         <Personal
           id="Circle-1"
           circle-name="Circle 1"
@@ -16,7 +20,11 @@
           I am learning and implement somes into here. And also you can read my blog to catch some valuable my notes.
         </div>
       </div>
-      <div class="bk-circle-container right-container">
+      <div
+        id="right-container"
+        class="bk-circle-container right-container"
+        :class="[closeCircles ? 'close':'']"
+      >
         <Personal
           id="Circle-2"
           circle-name="Circle 2"
@@ -36,8 +44,17 @@ export default {
     Header
   },
   data() {
-    return {};
-  }
+    return {
+      closeCircles:false
+    };
+  },
+
+  methods:{
+    activeModelPage(value){
+      
+     this.closeCircles = value
+      }
+    }
 };
 </script>
 
@@ -49,9 +66,17 @@ export default {
 }
 .left-container {
   left: 25%;
+  transition: left .7s;
+  &.close{
+    left: -25%;
+  }
 }
 .right-container {
   right: 25%;  
+  transition: right .7s;
+  &.close{
+    right: -25%;
+  }
 }
 .bk-about-container{
   height: 750px;

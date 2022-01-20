@@ -16,6 +16,7 @@ export const prepareUploadData = async (circle, objData) => {
         value: firebase.firestore.FieldValue.arrayUnion({
           value: objData.value,
           valueColor: objData.valueColor,
+          details:objData.description
         }),
       });
     resolve(true);

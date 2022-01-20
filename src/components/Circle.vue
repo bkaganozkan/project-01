@@ -98,9 +98,9 @@ export default {
           }
         })
       : null;
-    // this.testBtn();
+    this.testBtn();
     if (!this.rotateInterval) {
-      this.rotateInterval = setInterval(this.testBtn, 300);
+      this.rotateInterval = setInterval(this.testBtn, 500);
     }
   },
   methods: {
@@ -115,6 +115,8 @@ export default {
               "--rot": this.rot,
               "--circleRadius": this.circleRadius
             };
+            // if(this.rot > 720) this.rot = 360
+               this.rot = this.rot + this.angle;
             // slot.elm.style = `top: 45%;
             // position: absolute;
             // pointer-events: visible;
@@ -130,7 +132,7 @@ export default {
             //  transition: transform ${this.rot / 60}s;
             //  `;
             // this.rotateChild(slot, this.rot);
-            this.rot = this.rot + this.angle;
+          
           })
         : null;
       // .forEach((event) =>

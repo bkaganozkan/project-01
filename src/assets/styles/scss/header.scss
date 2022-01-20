@@ -7,7 +7,8 @@
 
   .bk-header {
     font-size: 48px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: bold;
     background-color: #f3ec78;
     // background-image: linear-gradient(45deg, #f3ec78, #af4261);
@@ -23,13 +24,27 @@
     filter: invert(69%) sepia(58%) saturate(4833%) hue-rotate(342deg)
       brightness(100%) contrast(92%);
     cursor: pointer;
-    width: 170px;
+    width: 0px;
     display: flex;
     justify-content: flex-end;
+
+    &:hover {
+      filter: invert(46%) sepia(87%) saturate(2580%) hue-rotate(234deg)
+        brightness(99%) contrast(102%);
+      cursor: pointer;
+    }
   }
-  .bk-planet:hover {
-    filter: invert(46%) sepia(87%) saturate(2580%) hue-rotate(234deg)
-      brightness(99%) contrast(102%);
-    cursor: pointer;
+
+  .bk-planet.active {
+    filter: invert(86%) sepia(88%) saturate(457%) hue-rotate(313deg)
+      brightness(96%) contrast(95%);
+    box-shadow: 5px 5px 100px 50px #fca9d3;
+    border-radius: 50%;
+
+    &:hover {
+      filter: invert(13%) sepia(83%) saturate(5180%) hue-rotate(346deg)
+        brightness(97%) contrast(122%);
+        box-shadow: none;
+    }
   }
 }
