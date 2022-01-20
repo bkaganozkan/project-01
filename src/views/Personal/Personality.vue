@@ -4,11 +4,12 @@
     class="bk-list-container"
   >
     <CircleList
-      v-for="(ind,x) in circleData.length"
+      v-for="(ind, x) in circleData.length"
       :id="circleName"
       :key="ind"
       :items="circleData[x].value"
       radius="750"
+      :total-circle="circleData.length + 1"
     >
       <PersonalCard
         v-for="(value, index) in circleData[x].value"
@@ -22,35 +23,34 @@
 <script>
 import CircleList from "@/components/Circle";
 import PersonalCard from "./PersonalCard.vue";
-import {mapActions, mapGetters} from 'vuex'
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Personal",
   components: {
     CircleList,
     PersonalCard
   },
-  props:{
-    circleName:{type:[String]}
+  props: {
+    circleName: { type: [String] }
   },
   data() {
     return {
-      dataLoaded:false,
-      circleData:[],
+      dataLoaded: false,
+      circleData: []
     };
   },
-  created(){
-    this.GET_CIRCLE_DATA(this.circleName).then(res => {
-      this.circleData =this.personalData[this.circleName];
-      console.log(this.circleData);
-      this.dataLoaded = res})
-    
+  created() {
+    this.GET_CIRCLE_DATA(this.circleName).then((res) => {
+      this.circleData = this.personalData[this.circleName];
+      this.dataLoaded = res;
+    });
   },
-  methods:{
-    ...mapActions(['GET_CIRCLE_DATA'])
+  methods: {
+    ...mapActions(["GET_CIRCLE_DATA"])
   },
-  computed:{
+  computed: {
     ...mapGetters({
-      personalData:'getPersonalData'
+      personalData: "getPersonalData"
     })
   }
 };
@@ -65,7 +65,7 @@ export default {
 .bk-list-container {
   position: relative;
   width: 100%;
-  top:50%;
+  top: 50%;
   border-radius: 50%;
   background-color: wheat;
 }
