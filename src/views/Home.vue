@@ -1,34 +1,40 @@
 <template>
   <div class="background">
     <Header @activePage="activeModelPage" />
-    <div class="bk-main-card">
-      <div
-        id="left-container"
-        class="bk-circle-container left-container"
-        :class="[closeCircles ? 'close':'']"
-      >
-        <Personal
-          id="Circle-1"
-          circle-name="Circle 1"
-        />
-      </div>
-      <div class="bk-about-container">
-        <div class="bk-about f-20">
-          Hi I am <span class="f-24">
-            Burak Kağan,
-          </span> Developing softwares and unsuccesfull responsive websites.
-          I am learning and implement somes into here. And also you can read my blog to catch some valuable my notes.
+    <div
+      class="bk-main-card"
+      :class="true ? 'flex-center' : null"
+    >
+      <ThreeWorld v-if="true" />
+      <div v-if="!true">
+        <div
+          id="left-container"
+          class="bk-circle-container left-container"
+          :class="[closeCircles ? 'close':'']"
+        >
+          <Personal
+            id="Circle-1"
+            circle-name="Circle 1"
+          />
         </div>
-      </div>
-      <div
-        id="right-container"
-        class="bk-circle-container right-container"
-        :class="[closeCircles ? 'close':'']"
-      >
-        <Personal
-          id="Circle-2"
-          circle-name="Circle 2"
-        />
+        <div class="bk-about-container">
+          <div class="bk-about f-20">
+            Hi I am <span class="f-24">
+              Burak Kağan,
+            </span> Developing softwares and unsuccesfull responsive websites.
+            I am learning and implement somes into here. And also you can read my blog to catch some valuable my notes.
+          </div>
+        </div>
+        <div
+          id="right-container"
+          class="bk-circle-container right-container"
+          :class="[closeCircles ? 'close':'']"
+        >
+          <Personal
+            id="Circle-2"
+            circle-name="Circle 2"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -37,11 +43,12 @@
 <script>
 import Personal from "./Personal/Personality.vue";
 import Header from "@/components/Header/Header";
+import ThreeWorld from "./ThreeWorld/ThreeWorld.vue";
 export default {
   name: "Home",
   components: {
     Personal,
-    Header
+    Header,ThreeWorld,
   },
   data() {
     return {

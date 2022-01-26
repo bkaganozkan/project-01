@@ -15,5 +15,6 @@ module.exports = {
     semi: "off",
     "no-async-promise-executor": "off",
     "no-empty-pattern": "off",
+    "no-unused-vars": "off",
   },
 };

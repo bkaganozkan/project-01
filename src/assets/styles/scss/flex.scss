@@ -5,6 +5,12 @@ $assets: "~@/assets/";
   // align-items: center;
   padding: 18px;
   overflow: unset;
+
+  &.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .background {
   background: url($assets + "/images/space.jpg") no-repeat center center fixed;
