@@ -35,9 +35,9 @@ export default class ParentObject {
   }
 
   SetObjectRotation(scene, camera, renderer) {
-    this.transformController = new TransformControls(camera, renderer);
-    this.transformController.attach(this.object);
-    this.transformController.setMode("rotate");
+    // this.transformController = new TransformControls(camera, renderer);
+    // this.transformController.attach(this.object);
+    // this.transformController.setMode("rotate");
     scene.add(this.transformController);
   }
 

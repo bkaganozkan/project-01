@@ -15,11 +15,12 @@ export default class Starship extends ParentObject {
   async CreateObject() {
     await super.CreateObject();
     this.object.scale.set(0.01, 0.01, 0.01);
-    this.object.rotation.x = -this.object.rotation.x;
+
+    
   }
 
-  SetObjectMovement(model, camera, controller) {
-    this.objectMovement = new StarshipMovement(model, camera, controller);
+  SetObjectMovement(camera, controller) {
+    this.objectMovement = new StarshipMovement(this.object, camera, controller);
     document.addEventListener(
       "keydown",
       (event) => {

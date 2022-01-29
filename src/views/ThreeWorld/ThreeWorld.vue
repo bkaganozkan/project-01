@@ -30,14 +30,14 @@ export default {
   async mounted() {
     // Create Threejs Scene
     this.mainScreen.SetCanvas(this.$refs["main-scene-canvas"]);
-    console.log(this.$refs["threeWorldContainer"]);
+    // console.log(this.$refs["threeWorldContainer"]);
     this.mainScreen.AddStats(this.$refs["threeWorldContainer"]);
+
     await this.mainScreen.CreateMainScene();
+
     this.spaceship = new Starship("spaceShip.fbx");
     await this.spaceship.CreateObject();
-    console.log(this.spaceship.getModel());
     await this.spaceship.SetObjectMovement(
-      this.spaceship.getModel(),
       this.mainScreen.camera,
       this.mainScreen.orbitControl
     );

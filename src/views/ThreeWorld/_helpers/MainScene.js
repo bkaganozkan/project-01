@@ -56,14 +56,14 @@ export default class MainScene {
       0.1,
       500
     );
-    this.camera.position.set(0, 15, 25);
+    this.camera.position.set(0, 35, 45);
     // this.camera.lookAt(MainScene.SceneObjects[0].object.position);
   }
-  CameraFollowObject(object) {
-    let objectPosition = object.object.position;
-    this.camera.position.set(0, objectPosition.y + 50, objectPosition.z + 50);
-    this.camera.lookAt(objectPosition);
-  }
+  // CameraFollowObject(object) {
+  //   let objectPosition = object.object.position;
+  //   this.camera.position.set(0, objectPosition.y + 50, objectPosition.z + 50);
+  //   this.camera.lookAt(objectPosition);
+  // }
 
   SetOrbitControl(camera, domElement) {
     this.orbitControl = new OrbitControls(camera, domElement);
@@ -103,7 +103,7 @@ export default class MainScene {
 
   SetObjectAttributies(scene, camera, renderer) {
     MainScene.SceneObjects.map((object) => {
-      object.SetObjectRotation(scene, camera, renderer);
+      // object.SetObjectRotation(scene, camera, renderer);
       object.SetObjectMovement(camera, renderer);
     });
   }
