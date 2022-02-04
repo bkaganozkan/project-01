@@ -39,7 +39,7 @@ export default {
     await this.spaceship.CreateObject();
     await this.spaceship.SetObjectMovement(
       this.mainScreen.camera,
-      this.mainScreen.orbitControl
+      this.mainScreen.renderer.domElement
     );
      this.mainScreen.AddObject(this.spaceship);
 

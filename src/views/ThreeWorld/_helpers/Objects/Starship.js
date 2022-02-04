@@ -10,17 +10,25 @@ export default class Starship extends ParentObject {
     this.objectMovement;
     this.keysPressed = {};
     this.keyDisplayQueue = {};
+
+    this.camera;
   }
 
   async CreateObject() {
     await super.CreateObject();
     this.object.scale.set(0.01, 0.01, 0.01);
-
-    
+    this.object.rotateY(Math.PI);
   }
 
-  SetObjectMovement(camera, controller) {
-    this.objectMovement = new StarshipMovement(this.object, camera, controller);
+  SetObjectMovement(camera, domElement) {
+    this.camera = camera;
+    this.objectMovement = new FlyControls(this.object, domElement);
+    this.objectMovement.movementSpeed = -100;
+    this.objectMovement.domElement = domElement;
+    this.objectMovement.rollSpeed = Math.PI / 24;
+    this.objectMovement.autoForward = false;
+    // this.objectMovement.activeLook = false;
+    this.objectMovement.dragToLook = false;
     document.addEventListener(
       "keydown",
       (event) => {
@@ -38,6 +46,10 @@ export default class Starship extends ParentObject {
   }
 
   updateMovement(delta) {
-    if (this) this.objectMovement.update(delta, this.keysPressed);
+    if (this) {
+      this.objectMovement.update(delta, this.keysPressed);
+      this.camera.position.set(0, 50, this.object.position.z + 45);
+      this.camera.lookAt(this.object.position);
+    }
   }
 }
